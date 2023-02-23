@@ -125,6 +125,28 @@ class _AddstudentWidgetState extends State<AddstudentWidget> {
           address: address,
           id: DateTime.now().millisecond.toString());
       Provider.of<ProviderDemo>(context, listen: false).addstudent(student);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Row(
+            children: const [
+              Icon(Icons.check_circle_outline, color: Colors.green),
+              SizedBox(width: 10),
+              Text(
+                'Success!',
+                style: TextStyle(color: Colors.black),
+              ),
+            ],
+          ),
+          backgroundColor: Colors.white,
+          elevation: 0,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: const BorderSide(color: Colors.green),
+          ),
+          duration: const Duration(seconds: 1),
+        ),
+      );
     }
     // print('$_name $_age');
   }

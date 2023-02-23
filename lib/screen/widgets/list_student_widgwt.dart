@@ -56,6 +56,31 @@ class ListStudentWidget extends StatelessWidget {
                                           listen: false)
                                       .deleteStudent(data.id.toString());
                                   Navigator.pop(context);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Row(
+                                        children: const [
+                                          Icon(Icons.check_circle_outline,
+                                              color: Colors.red),
+                                          SizedBox(width: 10),
+                                          Text(
+                                            'Successfuly deleted !',
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                        ],
+                                      ),
+                                      backgroundColor: Colors.white,
+                                      elevation: 0,
+                                      behavior: SnackBarBehavior.floating,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                        side: const BorderSide(
+                                            color: Colors.green),
+                                      ),
+                                      duration: const Duration(seconds: 1),
+                                    ),
+                                  );
                                 },
                                 child: const Text('Yes'),
                               ),
