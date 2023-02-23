@@ -14,15 +14,15 @@ class StudentDetieeils extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Profile'),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.edit),
-        onPressed: () {
-          Provider.of<ProviderDemo>(listen: false, context).editedfunction(
-            context,
-            StudentModel(address: '', age: '', clas: '', name: ''),
-          );
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: const Icon(Icons.edit),
+      //   onPressed: () {
+      //     Provider.of<ProviderDemo>(listen: false, context).editedfunction(
+      //       context,
+      //       StudentModel(address: '', age: '', clas: '', name: ''),
+      //     );
+      //   },
+      // ),
       body: Container(
         margin: const EdgeInsets.all(50),
         child: Column(
