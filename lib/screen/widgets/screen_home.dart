@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:newpro/db/function/db_function.dart';
+import 'package:newpro/provider/state_managemant.dart';
 import 'package:newpro/screen/widgets/add_student_widget.dart';
 import 'package:newpro/screen/widgets/list_student_widgwt.dart';
 import 'package:newpro/screen/widgets/search%20.dart';
+import 'package:provider/provider.dart';
 import '../../model/data_model.dart';
 
 class ScreenHome extends StatefulWidget {
@@ -17,7 +19,10 @@ class _ScreenHomeState extends State<ScreenHome> {
 
   @override
   Widget build(BuildContext context) {
-    getAllstudent();
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) =>
+          Provider.of<ProviderDemo>(context, listen: false).getAllstudent(),
+    );
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(

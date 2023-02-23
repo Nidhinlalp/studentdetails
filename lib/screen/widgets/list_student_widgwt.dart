@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:newpro/db/function/db_function.dart';
 import 'package:newpro/model/data_model.dart';
 import 'package:newpro/provider/state_managemant.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +21,8 @@ class ListStudentWidget extends StatelessWidget {
           final data = value.studentListNotifier[index];
           return GestureDetector(
             onTap: () {
-              openStudentDetials(context, student: data);
+              Provider.of<ProviderDemo>(context, listen: false)
+                  .openStudentDetials(context, student: data);
             },
             child: Card(
               color: Colors.grey.shade50.withOpacity(0.5),
@@ -52,7 +52,9 @@ class ListStudentWidget extends StatelessWidget {
                               ),
                               ElevatedButton(
                                 onPressed: () {
-                                  deleteStudent(data.id.toString());
+                                  Provider.of<ProviderDemo>(context,
+                                          listen: false)
+                                      .deleteStudent(data.id.toString());
                                   Navigator.pop(context);
                                 },
                                 child: const Text('Yes'),
@@ -71,14 +73,16 @@ class ListStudentWidget extends StatelessWidget {
                     IconButton(
                       iconSize: 24,
                       onPressed: () {
-                        editedfunction(
-                            ctx,
-                            StudentModel(
-                                name: data.name,
-                                age: data.age,
-                                clas: data.clas,
-                                address: data.address,
-                                id: data.id));
+                        Provider.of<ProviderDemo>(context, listen: false)
+                            .editedfunction(
+                          ctx,
+                          StudentModel(
+                              name: data.name,
+                              age: data.age,
+                              clas: data.clas,
+                              address: data.address,
+                              id: data.id),
+                        );
                       },
                       icon: const Icon(Icons.edit,
                           color: Color.fromARGB(255, 80, 19, 172)),

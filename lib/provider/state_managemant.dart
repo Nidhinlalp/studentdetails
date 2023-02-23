@@ -5,12 +5,14 @@ import 'package:newpro/screen/widgets/student_new.dart';
 
 class ProviderDemo with ChangeNotifier {
   List<StudentModel> studentListNotifier = [];
+  List<StudentModel> studentSearchResult = [];
 
   Future<void> addstudent(StudentModel value) async {
     final studentDB = await Hive.openBox<StudentModel>('student_db');
 
     studentListNotifier.add(value);
     await studentDB.put(value.id, value);
+    notifyListeners();
   }
 
   Future<void> getAllstudent() async {
@@ -18,18 +20,20 @@ class ProviderDemo with ChangeNotifier {
     studentListNotifier.clear();
 
     studentListNotifier.addAll(studentDB.values);
+    notifyListeners();
   }
 
   Future<void> deleteStudent(String id) async {
     final studentDB = await Hive.openBox<StudentModel>('student_db');
     await studentDB.delete(id);
     getAllstudent();
+    notifyListeners();
   }
 
   openStudentDetials(BuildContext context, {required StudentModel student}) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => Student_Detieeils(
+        builder: (context) => StudentDetieeils(
           student: student,
         ),
       ),
@@ -40,6 +44,7 @@ class ProviderDemo with ChangeNotifier {
     final studentDB = await Hive.openBox<StudentModel>('student_db');
     await studentDB.put(value.id, value);
     getAllstudent();
+    notifyListeners();
   }
 
   Future editedfunction(BuildContext ctx, StudentModel value) async {

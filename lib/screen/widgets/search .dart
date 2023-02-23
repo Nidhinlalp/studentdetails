@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:newpro/model/data_model.dart';
 import 'package:newpro/screen/widgets/student_new.dart';
-import '../../db/function/db_function.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/state_managemant.dart';
 
 class Search extends StatelessWidget {
   Search({super.key});
@@ -12,15 +13,17 @@ class Search extends StatelessWidget {
   Widget build(BuildContext context) {
     FocusNode srchFocus = FocusNode();
     srchFocus.requestFocus();
-    ValueNotifier<List<StudentModel>> studentList = ValueNotifier([]);
     return Scaffold(
       appBar: AppBar(
         title: TextField(
           controller: nameserarchcotroller,
           onChanged: (value) {
-            studentList.value =
-                serch(nameserarchcotroller.text, studentListNotifier.value);
-            studentList.notifyListeners();
+            context.read<ProviderDemo>().studentSearchResult = serch(
+                nameserarchcotroller.text,
+                context.read<ProviderDemo>().studentListNotifier);
+            context.read<ProviderDemo>().notifyListeners();
+
+            // studentList.notifyListeners();
 
             //  print(":::::::Length:${studentList.value.length}::::");
           },
@@ -28,27 +31,25 @@ class Search extends StatelessWidget {
           decoration: const InputDecoration(hintText: 'Search'),
         ),
       ),
-      body: ValueListenableBuilder(
-        valueListenable: studentList,
-        builder: (context, studentList, child) {
-          return ListView.builder(
-            itemCount: studentList.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => Student_Detieeils(
-                        student: studentList[index],
-                      ),
+      body: Consumer<ProviderDemo>(
+        builder: (BuildContext context, value, Widget? child) =>
+            ListView.builder(
+          itemCount: value.studentSearchResult.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => StudentDetieeils(
+                      student: value.studentSearchResult[index],
                     ),
-                  );
-                },
-                title: Text(studentList[index].name),
-              );
-            },
-          );
-        },
+                  ),
+                );
+              },
+              title: Text(value.studentSearchResult[index].name),
+            );
+          },
+        ),
       ),
     );
   }

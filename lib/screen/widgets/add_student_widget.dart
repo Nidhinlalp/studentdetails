@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:newpro/db/function/db_function.dart';
 import 'package:newpro/model/data_model.dart';
+import 'package:newpro/provider/state_managemant.dart';
+import 'package:provider/provider.dart';
 
 class AddstudentWidget extends StatefulWidget {
   const AddstudentWidget({super.key});
@@ -123,7 +124,7 @@ class _AddstudentWidgetState extends State<AddstudentWidget> {
           clas: clas,
           address: address,
           id: DateTime.now().millisecond.toString());
-      addstudent(student);
+      Provider.of<ProviderDemo>(context, listen: false).addstudent(student);
     }
     // print('$_name $_age');
   }

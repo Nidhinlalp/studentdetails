@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:newpro/db/function/db_function.dart';
 import 'package:newpro/model/data_model.dart';
+import 'package:newpro/provider/state_managemant.dart';
+import 'package:provider/provider.dart';
 
 // ignore: camel_case_types
-class Student_Detieeils extends StatelessWidget {
+class StudentDetieeils extends StatelessWidget {
   final StudentModel student;
-  const Student_Detieeils({super.key, required this.student});
+  const StudentDetieeils({super.key, required this.student});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +15,9 @@ class Student_Detieeils extends StatelessWidget {
         title: const Text('Profile'),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.edit),
+        child: const Icon(Icons.edit),
         onPressed: () {
-          editedfunction(
+          Provider.of<ProviderDemo>(listen: false, context).editedfunction(
               context, StudentModel(address: '', age: '', clas: '', name: ''));
         },
       ),
