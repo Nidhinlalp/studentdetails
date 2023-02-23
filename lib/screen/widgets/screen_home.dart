@@ -41,12 +41,15 @@ class _ScreenHomeState extends State<ScreenHome> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              AddstudentWidget(),
-              ListStudentWidget(),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                AddstudentWidget(),
+                ListStudentWidget(),
+              ],
+            ),
           ),
         ),
       ),
