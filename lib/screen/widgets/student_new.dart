@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newpro/db/function/db_function.dart';
 import 'package:newpro/model/data_model.dart';
 
 // ignore: camel_case_types
@@ -11,6 +12,13 @@ class Student_Detieeils extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.edit),
+        onPressed: () {
+          editedfunction(
+              context, StudentModel(address: '', age: '', clas: '', name: ''));
+        },
       ),
       body: Container(
         margin: const EdgeInsets.all(50),
