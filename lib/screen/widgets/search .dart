@@ -21,7 +21,6 @@ class Search extends StatelessWidget {
             context.read<ProviderDemo>().studentSearchResult = serch(
                 nameserarchcotroller.text,
                 context.read<ProviderDemo>().studentListNotifier);
-            context.read<ProviderDemo>().notifyListeners();
 
             // studentList.notifyListeners();
 

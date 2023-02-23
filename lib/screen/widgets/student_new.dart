@@ -18,7 +18,9 @@ class StudentDetieeils extends StatelessWidget {
         child: const Icon(Icons.edit),
         onPressed: () {
           Provider.of<ProviderDemo>(listen: false, context).editedfunction(
-              context, StudentModel(address: '', age: '', clas: '', name: ''));
+            context,
+            StudentModel(address: '', age: '', clas: '', name: ''),
+          );
         },
       ),
       body: Container(
