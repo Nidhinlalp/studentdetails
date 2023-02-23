@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:newpro/model/data_model.dart';
+import 'package:newpro/provider/state_managemant.dart';
 import 'package:newpro/screen/widgets/screen_home.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,13 +19,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-        primarySwatch: Colors.blue,
-        ),
-        debugShowCheckedModeBanner: false,
-        // ignore: prefer_const_constructors
-        home: ScreenHome());
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ProviderDemo(),
+        )
+      ],
+      child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          debugShowCheckedModeBanner: false,
+          // ignore: prefer_const_constructors
+          home: ScreenHome()),
+    );
   }
 }

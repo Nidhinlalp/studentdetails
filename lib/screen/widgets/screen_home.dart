@@ -23,10 +23,15 @@ class _ScreenHomeState extends State<ScreenHome> {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: (() {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Search()));
-              }),
-              icon: const Icon(Icons.search))
+            onPressed: (() {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Search(),
+                ),
+              );
+            }),
+            icon: const Icon(Icons.search),
+          )
         ],
         title: const Text('student'),
       ),
