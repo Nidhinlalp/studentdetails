@@ -11,9 +11,6 @@ class AddstudentWidget extends StatefulWidget {
 }
 
 class _AddstudentWidgetState extends State<AddstudentWidget> {
-
-  
-
   final _nameController = TextEditingController();
 
   final _ageControlageler = TextEditingController();
@@ -49,7 +46,7 @@ class _AddstudentWidgetState extends State<AddstudentWidget> {
               height: 30,
             ),
             TextFormField(
-               validator: (value) {
+              validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your age';
                 }
@@ -66,7 +63,7 @@ class _AddstudentWidgetState extends State<AddstudentWidget> {
               height: 30,
             ),
             TextFormField(
-               validator: (value) {
+              validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your class';
                 }
@@ -82,7 +79,7 @@ class _AddstudentWidgetState extends State<AddstudentWidget> {
               height: 30,
             ),
             TextFormField(
-               validator: (value) {
+              validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your address';
                 }
@@ -117,8 +114,8 @@ class _AddstudentWidgetState extends State<AddstudentWidget> {
     final age = _ageControlageler.text.toString();
     final clas = _clasControlageler.text.toString();
     final address = _addressControlageler.text.toString();
-    
-    if (name.isEmpty || age.isEmpty||clas.isEmpty||address.isEmpty) {
+
+    if (name.isEmpty || age.isEmpty || clas.isEmpty || address.isEmpty) {
     } else {
       StudentModel student = StudentModel(
           name: name,
@@ -130,5 +127,4 @@ class _AddstudentWidgetState extends State<AddstudentWidget> {
     }
     // print('$_name $_age');
   }
-  
 }
