@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:newpro/model/data_model.dart';
-import 'package:newpro/provider/state_managemant.dart';
-import 'package:provider/provider.dart';
 
 // ignore: camel_case_types
 class StudentDetieeils extends StatelessWidget {

@@ -147,6 +147,10 @@ class _AddstudentWidgetState extends State<AddstudentWidget> {
           duration: const Duration(seconds: 1),
         ),
       );
+      _nameController.clear();
+      _clasControlageler.clear();
+      _addressControlageler.clear();
+      _ageControlageler.clear();
     }
     // print('$_name $_age');
   }

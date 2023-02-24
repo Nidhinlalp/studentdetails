@@ -7,6 +7,11 @@ class ProviderDemo with ChangeNotifier {
   List<StudentModel> studentListNotifier = [];
   List<StudentModel> studentSearchResult = [];
 
+  set setStudentSearchResult(List<StudentModel> list) {
+    studentSearchResult = list;
+    notifyListeners();
+  }
+
   Future<void> addstudent(StudentModel value) async {
     final studentDB = await Hive.openBox<StudentModel>('student_db');
 
@@ -140,5 +145,6 @@ List<StudentModel> serch(String nameserch, List<StudentModel> allstudent) {
       .where((element) =>
           element.name.toLowerCase().contains(nameserch.toLowerCase()))
       .toList();
+
   return serchresult;
 }

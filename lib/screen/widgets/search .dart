@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newpro/model/data_model.dart';
 import 'package:newpro/screen/widgets/student_new.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +19,7 @@ class Search extends StatelessWidget {
         title: TextField(
           controller: nameserarchcotroller,
           onChanged: (value) {
-            context.read<ProviderDemo>().studentSearchResult = serch(
+            context.read<ProviderDemo>().setStudentSearchResult = serch(
                 nameserarchcotroller.text,
                 context.read<ProviderDemo>().studentListNotifier);
 
@@ -31,23 +32,120 @@ class Search extends StatelessWidget {
         ),
       ),
       body: Consumer<ProviderDemo>(
-        builder: (BuildContext context, value, Widget? child) =>
-            ListView.builder(
-          itemCount: value.studentSearchResult.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => StudentDetieeils(
-                      student: value.studentSearchResult[index],
-                    ),
+        builder: (BuildContext context, value, Widget? child) => Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView.builder(
+            itemCount: value.studentSearchResult.length,
+            itemBuilder: (context, index) {
+              return Card(
+                color: Colors.grey.shade50.withOpacity(0.5),
+                child: ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => StudentDetieeils(
+                          student: value.studentSearchResult[index],
+                        ),
+                      ),
+                    );
+                  },
+                  title: Text(value.studentSearchResult[index].name),
+                  subtitle: Text(value.studentSearchResult[index].age),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      //delete icon button
+                      IconButton(
+                        iconSize: 24,
+                        onPressed: () {
+                          //alertboox
+
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text('Delete student?'),
+                              content:
+                                  const Text('Do you want to delete the file?'),
+                              actions: [
+                                ElevatedButton(
+                                  onPressed: () =>
+                                      Navigator.of(context).pop(false),
+                                  child: const Text('No'),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Provider.of<ProviderDemo>(context,
+                                            listen: false)
+                                        .deleteStudent(value
+                                            .studentSearchResult[index].id
+                                            .toString());
+                                    Navigator.pop(context);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Row(
+                                          children: const [
+                                            Icon(Icons.check_circle_outline,
+                                                color: Colors.red),
+                                            SizedBox(width: 10),
+                                            Text(
+                                              'Successfuly deleted !',
+                                              style: TextStyle(
+                                                  color: Colors.black),
+                                            ),
+                                          ],
+                                        ),
+                                        backgroundColor: Colors.white,
+                                        elevation: 0,
+                                        behavior: SnackBarBehavior.floating,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          side: const BorderSide(
+                                              color: Colors.green),
+                                        ),
+                                        duration: const Duration(seconds: 1),
+                                      ),
+                                    );
+                                  },
+                                  child: const Text('Yes'),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        icon: const Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                      ),
+
+                      // edite button
+                      IconButton(
+                        iconSize: 24,
+                        onPressed: () {
+                          Provider.of<ProviderDemo>(context, listen: false)
+                              .editedfunction(
+                            context,
+                            StudentModel(
+                              name: value.studentListNotifier[index].name,
+                              age: value.studentListNotifier[index].age,
+                              clas: value.studentListNotifier[index].clas,
+                              address: value.studentListNotifier[index].address,
+                              id: value.studentListNotifier[index].id,
+                            ),
+                          );
+                        },
+                        icon: const Icon(
+                          Icons.edit,
+                          color: Color.fromARGB(255, 80, 19, 172),
+                        ),
+                      ),
+                    ],
                   ),
-                );
-              },
-              title: Text(value.studentSearchResult[index].name),
-            );
-          },
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
