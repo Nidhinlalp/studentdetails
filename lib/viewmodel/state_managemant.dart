@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:newpro/model/data_model.dart';
-import 'package:newpro/screen/widgets/student_new.dart';
+import 'package:newpro/view/widgets/student_new.dart';
 
-class ProviderDemo with ChangeNotifier {
+class ProviderDemo extends ChangeNotifier {
   List<StudentModel> studentListNotifier = [];
   List<StudentModel> studentSearchResult = [];
 

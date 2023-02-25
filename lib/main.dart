@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:newpro/model/data_model.dart';
-import 'package:newpro/provider/state_managemant.dart';
-import 'package:newpro/screen/widgets/screen_home.dart';
+import 'package:newpro/viewmodel/state_managemant.dart';
+import 'package:newpro/view/widgets/screen_home.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {

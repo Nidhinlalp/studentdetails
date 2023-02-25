@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:newpro/model/data_model.dart';
-import 'package:newpro/screen/widgets/student_new.dart';
+import 'package:newpro/view/widgets/student_new.dart';
 import 'package:provider/provider.dart';
 
-import '../../provider/state_managemant.dart';
+import '../../viewmodel/state_managemant.dart';
 
 class Search extends StatelessWidget {
   Search({super.key});
@@ -12,6 +12,8 @@ class Search extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<ProviderDemo>().setStudentSearchResult =
+        context.read<ProviderDemo>().studentListNotifier;
     FocusNode srchFocus = FocusNode();
     srchFocus.requestFocus();
     return Scaffold(

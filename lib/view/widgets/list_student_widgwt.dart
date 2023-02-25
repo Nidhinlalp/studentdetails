@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newpro/model/data_model.dart';
-import 'package:newpro/provider/state_managemant.dart';
+import 'package:newpro/viewmodel/state_managemant.dart';
 import 'package:provider/provider.dart';
 
 class ListStudentWidget extends StatelessWidget {
@@ -21,7 +21,8 @@ class ListStudentWidget extends StatelessWidget {
           final data = value.studentListNotifier[index];
           return GestureDetector(
             onTap: () {
-              Provider.of<ProviderDemo>(context, listen: false)
+              context
+                  .read<ProviderDemo>()
                   .openStudentDetials(context, student: data);
             },
             child: Card(
@@ -76,7 +77,8 @@ class ListStudentWidget extends StatelessWidget {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10),
                                         side: const BorderSide(
-                                            color: Colors.green),
+                                          color: Colors.green,
+                                        ),
                                       ),
                                       duration: const Duration(seconds: 1),
                                     ),
@@ -102,15 +104,18 @@ class ListStudentWidget extends StatelessWidget {
                             .editedfunction(
                           ctx,
                           StudentModel(
-                              name: data.name,
-                              age: data.age,
-                              clas: data.clas,
-                              address: data.address,
-                              id: data.id),
+                            name: data.name,
+                            age: data.age,
+                            clas: data.clas,
+                            address: data.address,
+                            id: data.id,
+                          ),
                         );
                       },
-                      icon: const Icon(Icons.edit,
-                          color: Color.fromARGB(255, 80, 19, 172)),
+                      icon: const Icon(
+                        Icons.edit,
+                        color: Color.fromARGB(255, 80, 19, 172),
+                      ),
                     ),
                   ],
                 ),

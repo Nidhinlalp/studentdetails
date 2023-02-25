@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:newpro/provider/state_managemant.dart';
-import 'package:newpro/screen/widgets/add_student_widget.dart';
-import 'package:newpro/screen/widgets/list_student_widgwt.dart';
-import 'package:newpro/screen/widgets/search%20.dart';
+import 'package:newpro/viewmodel/state_managemant.dart';
+import 'package:newpro/view/widgets/add_student_widget.dart';
+import 'package:newpro/view/widgets/list_student_widgwt.dart';
+import 'package:newpro/view/widgets/search%20.dart';
 import 'package:provider/provider.dart';
 import '../../model/data_model.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:newpro/model/data_model.dart';
-import 'package:newpro/provider/state_managemant.dart';
+import 'package:newpro/viewmodel/state_managemant.dart';
 import 'package:provider/provider.dart';
 
 class AddstudentWidget extends StatefulWidget {
