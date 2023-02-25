@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:newpro/model/data_model.dart';
 import 'package:newpro/view/widgets/student_new.dart';
 
-class ProviderDemo extends ChangeNotifier {
+class ProviderDemo with ChangeNotifier {
   List<StudentModel> studentListNotifier = [];
   List<StudentModel> studentSearchResult = [];
 
