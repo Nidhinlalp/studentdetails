@@ -24,10 +24,6 @@ class Search extends StatelessWidget {
             context.read<ProviderDemo>().setStudentSearchResult = serch(
                 nameserarchcotroller.text,
                 context.read<ProviderDemo>().studentListNotifier);
-
-            // studentList.notifyListeners();
-
-            //  print(":::::::Length:${studentList.value.length}::::");
           },
           focusNode: srchFocus,
           decoration: const InputDecoration(hintText: 'Search'),
@@ -35,8 +31,14 @@ class Search extends StatelessWidget {
       ),
       body: Consumer<ProviderDemo>(
         builder: (BuildContext context, value, Widget? child) => Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(
+            top: 10.0,
+            left: 7.0,
+            right: 7.0,
+          ),
           child: ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: value.studentSearchResult.length,
             itemBuilder: (context, index) {
               return Card(

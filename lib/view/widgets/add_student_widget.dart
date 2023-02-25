@@ -24,87 +24,103 @@ class _AddstudentWidgetState extends State<AddstudentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your name';
-                }
-                return null;
-              },
-              controller: _nameController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'name',
-              ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Add Student'),
+          backgroundColor: Colors.indigoAccent,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: 20.0, left: 10.0, right: 10.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your name';
+                    }
+                    return null;
+                  },
+                  controller: _nameController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'name',
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your age';
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.number,
+                  controller: _ageControlageler,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'age',
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your class';
+                    }
+                    return null;
+                  },
+                  controller: _clasControlageler,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'class',
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your address';
+                    }
+                    return null;
+                  },
+                  controller: _addressControlageler,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'address',
+                  ),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                ElevatedButton.icon(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        onAddStudentButtonCliked();
+                      }
+                    },
+                    icon: const Icon(Icons.add),
+                    label: const Text('Add Student'),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor:
+                          Colors.white, //change background color of button
+                      backgroundColor:
+                          Colors.indigoAccent, //change text color of button
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                    )),
+              ],
             ),
-            const SizedBox(
-              height: 30,
-            ),
-            TextFormField(
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your age';
-                }
-                return null;
-              },
-              keyboardType: TextInputType.number,
-              controller: _ageControlageler,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'age',
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            TextFormField(
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your class';
-                }
-                return null;
-              },
-              controller: _clasControlageler,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'class',
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            TextFormField(
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your address';
-                }
-                return null;
-              },
-              controller: _addressControlageler,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'address',
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  onAddStudentButtonCliked();
-                }
-              },
-              icon: const Icon(Icons.add),
-              label: const Text('Add Student'),
-            ),
-          ],
+          ),
         ),
       ),
     );

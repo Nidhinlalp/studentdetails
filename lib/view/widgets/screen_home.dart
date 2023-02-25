@@ -38,6 +38,20 @@ class _ScreenHomeState extends State<ScreenHome> {
           )
         ],
         title: const Text('student'),
+        backgroundColor: Colors.indigoAccent,
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AddstudentWidget(),
+            ),
+          );
+        },
+        icon: const Icon(Icons.play_arrow),
+        label: const Text('Add Student'),
+        backgroundColor: Colors.indigoAccent,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -46,8 +60,11 @@ class _ScreenHomeState extends State<ScreenHome> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: const [
-                AddstudentWidget(),
-                ListStudentWidget(),
+                //
+                Padding(
+                  padding: EdgeInsets.only(top: 10.0),
+                  child: ListStudentWidget(),
+                ),
               ],
             ),
           ),
