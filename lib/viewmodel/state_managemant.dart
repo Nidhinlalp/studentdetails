@@ -126,6 +126,17 @@ class ProviderDemo with ChangeNotifier {
   }
 }
 
+List<StudentModel> serch(String nameserch, List<StudentModel> allstudent) {
+  List<StudentModel> serchresult = [];
+
+  serchresult = allstudent
+      .where((element) =>
+          element.name.toLowerCase().contains(nameserch.toLowerCase()))
+      .toList();
+
+  return serchresult;
+}
+
 class SystemPadding extends StatelessWidget {
   final Widget child;
 
@@ -136,15 +147,4 @@ class SystemPadding extends StatelessWidget {
     return AnimatedContainer(
         duration: const Duration(milliseconds: 300), child: child);
   }
-}
-
-List<StudentModel> serch(String nameserch, List<StudentModel> allstudent) {
-  List<StudentModel> serchresult = [];
-
-  serchresult = allstudent
-      .where((element) =>
-          element.name.toLowerCase().contains(nameserch.toLowerCase()))
-      .toList();
-
-  return serchresult;
 }
