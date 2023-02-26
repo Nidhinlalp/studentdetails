@@ -6,14 +6,9 @@ import 'package:newpro/view/widgets/search%20.dart';
 import 'package:provider/provider.dart';
 import '../../model/data_model.dart';
 
-class ScreenHome extends StatefulWidget {
-  const ScreenHome({super.key});
+class ScreenHome extends StatelessWidget {
+  ScreenHome({super.key});
 
-  @override
-  State<ScreenHome> createState() => _ScreenHomeState();
-}
-
-class _ScreenHomeState extends State<ScreenHome> {
   List<StudentModel> allstudent = [];
 
   @override
