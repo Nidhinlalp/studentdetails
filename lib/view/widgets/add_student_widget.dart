@@ -108,7 +108,7 @@ class _AddstudentWidgetState extends State<AddstudentWidget> {
                       }
                     },
                     icon: const Icon(Icons.add),
-                    label: const Text('Add Student'),
+                    label: const Text('Add'),
                     style: ElevatedButton.styleFrom(
                       foregroundColor:
                           Colors.white, //change background color of button
