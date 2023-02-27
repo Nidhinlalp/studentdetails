@@ -163,6 +163,7 @@ class _AddstudentWidgetState extends State<AddstudentWidget> {
           duration: const Duration(seconds: 1),
         ),
       );
+      Navigator.of(context).pop();
       _nameController.clear();
       _clasControlageler.clear();
       _addressControlageler.clear();
