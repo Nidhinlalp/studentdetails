@@ -13,7 +13,7 @@ class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<ProviderDemo>().setStudentSearchResult =
-        context.read<ProviderDemo>().studentListNotifier;
+        context.read<ProviderDemo>().studentList;
     FocusNode srchFocus = FocusNode();
     srchFocus.requestFocus();
     return Scaffold(
@@ -23,7 +23,7 @@ class Search extends StatelessWidget {
           onChanged: (value) {
             context.read<ProviderDemo>().setStudentSearchResult = serch(
                 nameserarchcotroller.text,
-                context.read<ProviderDemo>().studentListNotifier);
+                context.read<ProviderDemo>().studentList);
           },
           focusNode: srchFocus,
           decoration: const InputDecoration(hintText: 'Search'),
@@ -131,11 +131,11 @@ class Search extends StatelessWidget {
                               .editedfunction(
                             context,
                             StudentModel(
-                              name: value.studentListNotifier[index].name,
-                              age: value.studentListNotifier[index].age,
-                              clas: value.studentListNotifier[index].clas,
-                              address: value.studentListNotifier[index].address,
-                              id: value.studentListNotifier[index].id,
+                              name: value.studentList[index].name,
+                              age: value.studentList[index].age,
+                              clas: value.studentList[index].clas,
+                              address: value.studentList[index].address,
+                              id: value.studentList[index].id,
                             ),
                           );
                         },

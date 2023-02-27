@@ -4,7 +4,7 @@ import 'package:newpro/model/data_model.dart';
 import 'package:newpro/view/widgets/student_new.dart';
 
 class ProviderDemo with ChangeNotifier {
-  List<StudentModel> studentListNotifier = [];
+  List<StudentModel> studentList = [];
   List<StudentModel> studentSearchResult = [];
 
   set setStudentSearchResult(List<StudentModel> list) {
@@ -15,16 +15,16 @@ class ProviderDemo with ChangeNotifier {
   Future<void> addstudent(StudentModel value) async {
     final studentDB = await Hive.openBox<StudentModel>('student_db');
 
-    studentListNotifier.add(value);
+    studentList.add(value);
     await studentDB.put(value.id, value);
     notifyListeners();
   }
 
   Future<void> getAllstudent() async {
     final studentDB = await Hive.openBox<StudentModel>('student_db');
-    studentListNotifier.clear();
+    studentList.clear();
 
-    studentListNotifier.addAll(studentDB.values);
+    studentList.addAll(studentDB.values);
     notifyListeners();
   }
 

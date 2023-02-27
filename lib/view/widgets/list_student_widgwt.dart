@@ -18,7 +18,7 @@ class ListStudentWidget extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (ctx, index) {
-          final data = value.studentListNotifier[index];
+          final data = value.studentList[index];
           return GestureDetector(
             onTap: () {
               context
@@ -126,7 +126,7 @@ class ListStudentWidget extends StatelessWidget {
         separatorBuilder: (ctx, index) {
           return const Divider();
         },
-        itemCount: value.studentListNotifier.length,
+        itemCount: value.studentList.length,
       ),
     );
   }
