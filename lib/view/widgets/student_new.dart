@@ -20,10 +20,10 @@ class StudentDetieeils extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.edit_note_rounded),
         onPressed: () {
-          Provider.of<ProviderDemo>(listen: false, context).editedfunction(
-            context,
-            student,
-          );
+          context.read<ProviderDemo>().editedfunction(
+                context,
+                student,
+              );
         },
       ),
       body: Container(
