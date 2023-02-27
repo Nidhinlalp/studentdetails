@@ -18,7 +18,7 @@ class StudentDetieeils extends StatelessWidget {
         title: const Text('Profile'),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.edit),
+        child: const Icon(Icons.edit_note_rounded),
         onPressed: () {
           Provider.of<ProviderDemo>(listen: false, context).editedfunction(
             context,
@@ -33,7 +33,7 @@ class StudentDetieeils extends StatelessWidget {
           children: [
             Image.network(
               'https://media.istockphoto.com/id/1142192548/vector/man-avatar-profile-male-face-silhouette-or-icon-isolated-on-white-background-vector.jpg?s=612x612&w=is&k=20&c=F3b3PaWVe3fW-LMQNptQq_DS44UnVk4TJS4nxSWHsxI=',
-              width: 400,
+              width: 200,
             ),
             Container(
               color: Colors.blue,

@@ -44,7 +44,7 @@ class ScreenHome extends StatelessWidget {
             ),
           );
         },
-        icon: const Icon(Icons.play_arrow),
+        icon: const Icon(Icons.add_circle_outline_rounded),
         label: const Text('Add Student'),
         backgroundColor: Colors.indigoAccent,
       ),

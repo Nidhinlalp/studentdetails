@@ -113,7 +113,7 @@ class ListStudentWidget extends StatelessWidget {
                         );
                       },
                       icon: const Icon(
-                        Icons.edit,
+                        Icons.edit_note_rounded,
                         color: Color.fromARGB(255, 80, 19, 172),
                       ),
                     ),
